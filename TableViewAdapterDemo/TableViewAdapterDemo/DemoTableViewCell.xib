@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DemoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-1T-zLU">
+                        <rect key="frame" x="55" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-4e-zwE">
+                        <rect key="frame" x="197" y="11" width="51" height="31"/>
+                    </switch>
+                </subviews>
+                <color key="backgroundColor" red="1" green="0.36078432199999999" blue="0.31372550129999999" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="cj7-1T-zLU" secondAttribute="trailing" constant="215" id="5qO-Pk-7K8"/>
+                    <constraint firstItem="FRf-4e-zwE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="7Te-1F-aVB"/>
+                    <constraint firstItem="cj7-1T-zLU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="47" id="84T-Iv-8uu"/>
+                    <constraint firstItem="cj7-1T-zLU" firstAttribute="top" secondItem="FRf-4e-zwE" secondAttribute="top" id="RSJ-nT-Gag"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cj7-1T-zLU" secondAttribute="trailing" constant="215" id="ZwR-kg-93p"/>
+                    <constraint firstItem="FRf-4e-zwE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="189" id="ecT-ad-a3b"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="FRf-4e-zwE" secondAttribute="bottom" constant="-7" id="fgW-LG-MX8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FRf-4e-zwE" secondAttribute="trailing" constant="66" id="nrl-ht-iKw"/>
+                    <constraint firstItem="cj7-1T-zLU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="47" id="qW6-RI-gcP"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+</document>
