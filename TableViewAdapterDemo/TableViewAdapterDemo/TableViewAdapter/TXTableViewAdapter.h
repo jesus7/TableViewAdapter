@@ -1,5 +1,5 @@
 //
-//  TableViewAdapter.h
+//  TXTableViewAdapter.h
 //  Platform
 //
 //  Created by  jesus7_w on 15/10/15.
@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TabelViewCellModule.h"
+#import "TXTabelViewCellModule.h"
 
-@class TableViewAdapter;
+@class TXTableViewAdapter;
 
 @protocol TableItemClickDelegate <NSObject>
 @required
--(void) onItemClickforTableView:(UITableView *) tableView atIndexPath:(NSIndexPath *) indexPath inAdapter:(TableViewAdapter*) adapter ;
+-(void) onItemClickforTableView:(UITableView *) tableView atIndexPath:(NSIndexPath *) indexPath inAdapter:(TXTableViewAdapter*) adapter ;
 @end
 
 //编辑回调,其实就是把UITableViewDelegate的一些方法分离
@@ -24,22 +24,22 @@
 -(NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@interface TableViewAdapter : NSObject<UITableViewDataSource, UITableViewDelegate>
+@interface TXTableViewAdapter : NSObject<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @property (nonatomic, weak) id<TableItemClickDelegate> delegate;
 
 @property (nonatomic, weak) id<TableAdapterSupportEditDelegate> editDelegate;
 
--(TabelViewCellModule *) cellModuleAtIndexPath:(NSIndexPath *) indexPath;
--(TabelViewSectionModule *) sectionModuleAtSection:(NSInteger) section;
+-(TXTabelViewCellModule *) cellModuleAtIndexPath:(NSIndexPath *) indexPath;
+-(TXTabelViewSectionModule *) sectionModuleAtSection:(NSInteger) section;
 @end
 
 //简单的tableview适配器
-@interface SimpleTableViewAdapter : TableViewAdapter
+@interface TXSimpleTableViewAdapter : TXTableViewAdapter
 
 @end
 
 @interface  UITableView (Adapter)
-@property (nonatomic, weak) TableViewAdapter *adapter;
+@property (nonatomic, weak) TXTableViewAdapter *adapter;
 @end

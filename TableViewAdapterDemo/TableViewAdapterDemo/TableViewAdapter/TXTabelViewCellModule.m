@@ -1,20 +1,20 @@
 //
-//  TabelViewCellModule.m
+//  TXTabelViewCellModule.m
 //  Platform
 //
 //  Created by  jesus7_w on 15/10/15.
 //  Copyright © 2015年  jesus7_w. All rights reserved.
 //
 
-#import "TabelViewCellModule.h"
+#import "TXTabelViewCellModule.h"
 
-@implementation TabelViewModule
+@implementation TXTabelViewModule
 -(void) loadData {
     //@TODO
 }
 @end
 
-@implementation TabelViewCellModule
+@implementation TXTabelViewCellModule
 -(instancetype) init {
     self = [super init];
     if (self) {
@@ -34,7 +34,7 @@
 }
 @end
 
-@implementation TabelViewSectionModule
+@implementation TXTabelViewSectionModule
 
 -(instancetype) init {
     self = [super init];
@@ -47,6 +47,6 @@
 @end
 
 
-@implementation TabelViewSimpleCellModule
+@implementation TXTabelViewSimpleCellModule
 
 @end
