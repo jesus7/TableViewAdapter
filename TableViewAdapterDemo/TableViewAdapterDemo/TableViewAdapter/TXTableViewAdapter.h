@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TXTabelViewCellModule.h"
+#import "TXTableViewCellModule.h"
 
 @class TXTableViewAdapter;
 
@@ -31,8 +31,8 @@
 
 @property (nonatomic, weak) id<TableAdapterSupportEditDelegate> editDelegate;
 
--(TXTabelViewCellModule *) cellModuleAtIndexPath:(NSIndexPath *) indexPath;
--(TXTabelViewSectionModule *) sectionModuleAtSection:(NSInteger) section;
+-(TXTableViewCellModule *) cellModuleAtIndexPath:(NSIndexPath *) indexPath;
+-(TXTableViewSectionModule *) sectionModuleAtSection:(NSInteger) section;
 @end
 
 //简单的tableview适配器

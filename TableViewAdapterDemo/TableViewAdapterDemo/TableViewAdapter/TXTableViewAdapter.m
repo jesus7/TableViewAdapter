@@ -19,12 +19,12 @@
     return self;
 }
 
--(TXTabelViewCellModule*) cellModuleAtIndexPath:(NSIndexPath *)indexPath {
-    TXTabelViewSectionModule *section = [self sectionModuleAtSection:indexPath.section];
+-(TXTableViewCellModule*) cellModuleAtIndexPath:(NSIndexPath *)indexPath {
+    TXTableViewSectionModule *section = [self sectionModuleAtSection:indexPath.section];
     return section.dataSource[indexPath.row];
 }
 
--(TXTabelViewSectionModule *) sectionModuleAtSection:(NSInteger)section {
+-(TXTableViewSectionModule *) sectionModuleAtSection:(NSInteger)section {
     return _dataSource[section];
 }
 
@@ -42,7 +42,7 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXTabelViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
+    TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
     if (module.dynamicHeight) {
         return module.dynamicHeight(indexPath, tableView, module);
     }
@@ -50,7 +50,7 @@
 }
 
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    TXTabelViewSectionModule *sectionModule = [self sectionModuleAtSection:section];
+    TXTableViewSectionModule *sectionModule = [self sectionModuleAtSection:section];
     UITableViewHeaderFooterView *view =  [tableView dequeueReusableHeaderFooterViewWithIdentifier:sectionModule.viewIdentifier];
     if (!view) {
         view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:sectionModule.viewIdentifier];
@@ -74,7 +74,7 @@
 
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXTabelViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
+    TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:module.viewIdentifier];
     if (!cell) {
         if (module.createCell) {
@@ -106,7 +106,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXTabelViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
+    TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
     if (module.clickCell) {
         module.clickCell(indexPath, tableView, module);
         return;
@@ -118,7 +118,7 @@
 }
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    TXTabelViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
+    TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
     if (module.dynamicHeight || !module.calculationHeightByCell) {
         return;
     }
@@ -130,7 +130,7 @@
     }
     module.height =  height;
     
-    module.dynamicHeight = ^CGFloat (NSIndexPath* indexPath, UITableView* tableView,  TXTabelViewCellModule* module){
+    module.dynamicHeight = ^CGFloat (NSIndexPath* indexPath, UITableView* tableView,  TXTableViewCellModule* module){
         return module.height;
     };
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW , 0.01), dispatch_get_main_queue(), ^{
@@ -153,7 +153,7 @@
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    TXTabelViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
+//    TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
 //    return module.height;
 //}
 
@@ -195,11 +195,11 @@
     return self.dataSource.count;
 }
 
--(TXTabelViewCellModule*) cellModuleAtIndexPath:(NSIndexPath *)indexPath {
+-(TXTableViewCellModule*) cellModuleAtIndexPath:(NSIndexPath *)indexPath {
     return self.dataSource[indexPath.row];
 }
 
--(TXTabelViewSectionModule *) sectionModuleAtSection:(NSInteger)section {
+-(TXTableViewSectionModule *) sectionModuleAtSection:(NSInteger)section {
     return nil;
 }
 

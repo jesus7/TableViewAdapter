@@ -13,7 +13,7 @@
 		A57D58541C22A76A0042651F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D58521C22A76A0042651F /* Main.storyboard */; };
 		A57D58561C22A76A0042651F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57D58551C22A76A0042651F /* Assets.xcassets */; };
 		A57D58591C22A76A0042651F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57D58571C22A76A0042651F /* LaunchScreen.storyboard */; };
-		A57D58651C22A7CA0042651F /* TXTabelViewCellModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D58621C22A7CA0042651F /* TXTabelViewCellModule.m */; };
+		A57D58651C22A7CA0042651F /* TXTableViewCellModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D58621C22A7CA0042651F /* TXTableViewCellModule.m */; };
 		A57D58661C22A7CA0042651F /* TXTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D58641C22A7CA0042651F /* TXTableViewAdapter.m */; };
 		A57D586D1C22B0F00042651F /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D586C1C22B0F00042651F /* DemoViewController.m */; };
 		A57D58711C22B82F0042651F /* DemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D586F1C22B82F0042651F /* DemoTableViewCell.m */; };
@@ -31,8 +31,8 @@
 		A57D58551C22A76A0042651F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A57D58581C22A76A0042651F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A57D585A1C22A76A0042651F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A57D58611C22A7CA0042651F /* TXTabelViewCellModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXTabelViewCellModule.h; sourceTree = "<group>"; };
-		A57D58621C22A7CA0042651F /* TXTabelViewCellModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTabelViewCellModule.m; sourceTree = "<group>"; };
+		A57D58611C22A7CA0042651F /* TXTableViewCellModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXTableViewCellModule.h; sourceTree = "<group>"; };
+		A57D58621C22A7CA0042651F /* TXTableViewCellModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTableViewCellModule.m; sourceTree = "<group>"; };
 		A57D58631C22A7CA0042651F /* TXTableViewAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXTableViewAdapter.h; sourceTree = "<group>"; };
 		A57D58641C22A7CA0042651F /* TXTableViewAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXTableViewAdapter.m; sourceTree = "<group>"; };
 		A57D586B1C22B0F00042651F /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 		A57D58601C22A7CA0042651F /* TableViewAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				A57D58611C22A7CA0042651F /* TXTabelViewCellModule.h */,
-				A57D58621C22A7CA0042651F /* TXTabelViewCellModule.m */,
+				A57D58611C22A7CA0042651F /* TXTableViewCellModule.h */,
+				A57D58621C22A7CA0042651F /* TXTableViewCellModule.m */,
 				A57D58631C22A7CA0042651F /* TXTableViewAdapter.h */,
 				A57D58641C22A7CA0042651F /* TXTableViewAdapter.m */,
 			);
@@ -184,7 +184,7 @@
 				A57D58511C22A76A0042651F /* ViewController.m in Sources */,
 				A57D58711C22B82F0042651F /* DemoTableViewCell.m in Sources */,
 				A57D584E1C22A76A0042651F /* AppDelegate.m in Sources */,
-				A57D58651C22A7CA0042651F /* TXTabelViewCellModule.m in Sources */,
+				A57D58651C22A7CA0042651F /* TXTableViewCellModule.m in Sources */,
 				A57D586D1C22B0F00042651F /* DemoViewController.m in Sources */,
 				A57D584B1C22A76A0042651F /* main.m in Sources */,
 				A57D58661C22A7CA0042651F /* TXTableViewAdapter.m in Sources */,

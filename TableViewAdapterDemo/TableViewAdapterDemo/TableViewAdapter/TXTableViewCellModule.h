@@ -1,5 +1,5 @@
 //
-//  TXTabelViewCellModule.h
+//  TXTableViewCellModule.h
 //  Platform
 //
 //  Created by  jesus7_w on 15/10/15.
@@ -14,39 +14,39 @@
 #define  BLOCK_END __strong id sself = wself;
 /****
  BLOCK_START
- TXTabelViewCellModule updateCell =   ^void (UITableViewCell *cell, NSIndexPath* indexPath, UITableView *tableView, TXTabelViewCellModule *module) {
+ TXTableViewCellModule updateCell =   ^void (UITableViewCell *cell, NSIndexPath* indexPath, UITableView *tableView, TXTableViewCellModule *module) {
     BLOCK_END
     [sself dotoSomeThing];
  };
 ****/
 
-@class TXTabelViewCellModule;
+@class TXTableViewCellModule;
 
 @protocol TableViewCellModuleDataSource <NSObject>
 
 @required
-+(TXTabelViewCellModule *) moduleAtIndexPath:(NSIndexPath *) indexPath withModel:(id) model;
++(TXTableViewCellModule *) moduleAtIndexPath:(NSIndexPath *) indexPath withModel:(id) model;
 
 @optional
--(void) tableView:(UITableView *) tableView UpdateCell:(UITableViewCell *) cell atIndexPath:(NSIndexPath *) indexPath withModule:(TXTabelViewCellModule *) module;
+-(void) tableView:(UITableView *) tableView UpdateCell:(UITableViewCell *) cell atIndexPath:(NSIndexPath *) indexPath withModule:(TXTableViewCellModule *) module;
 @end
 
-@class TXTabelViewCellModule;
-@class TXTabelViewSectionModule;
+@class TXTableViewCellModule;
+@class TXTableViewSectionModule;
 //定义更新cell的block
-typedef void (^UpdateCellCallBack)(UITableViewCell*, NSIndexPath*, UITableView*, TXTabelViewCellModule*);
+typedef void (^UpdateCellCallBack)(UITableViewCell*, NSIndexPath*, UITableView*, TXTableViewCellModule*);
 //定义点击cell的block;
-typedef void (^ClickCellCallBack)(NSIndexPath*, UITableView*, TXTabelViewCellModule *);
+typedef void (^ClickCellCallBack)(NSIndexPath*, UITableView*, TXTableViewCellModule *);
 
 //定义高度获取的block;
-typedef CGFloat (^CellHeightCallBack)(NSIndexPath*, UITableView*,  TXTabelViewCellModule*);
+typedef CGFloat (^CellHeightCallBack)(NSIndexPath*, UITableView*,  TXTableViewCellModule*);
 
 //定义创建cell的block
 typedef UITableViewCell* (^CreateCellCallBack)(NSIndexPath*, UITableView*,  NSString*);
 //加载数据
 typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 
-@interface TXTabelViewModule : NSObject
+@interface TXTableViewModule : NSObject
 @property (nonatomic, assign) CGFloat height;
 
 @property (nonatomic, strong) NSString *viewIdentifier;
@@ -58,7 +58,7 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 @end
 
 //tableview cell模块
-@interface TXTabelViewCellModule : TXTabelViewModule
+@interface TXTableViewCellModule : TXTableViewModule
 @property (nonatomic, assign) Class viewCls;
 //优先考虑dynamicHeight
 @property (nonatomic, copy) CellHeightCallBack dynamicHeight;
@@ -82,7 +82,7 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 
 
 
-@interface TXTabelViewSimpleCellModule : TXTabelViewCellModule
+@interface TXTableViewSimpleCellModule : TXTableViewCellModule
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *subTitle;
 @property (nonatomic, strong) UIImage *icon;
@@ -90,10 +90,10 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 
 
 typedef UIView* (^MakeHeaderOrFooterViewBlock)();
-typedef void (^UpdateSectionCallBack)(UIView*, NSInteger, UITableView*, TXTabelViewSectionModule *);
+typedef void (^UpdateSectionCallBack)(UIView*, NSInteger, UITableView*, TXTableViewSectionModule *);
 
 //tableview 头模块
-@interface TXTabelViewSectionModule : TXTabelViewModule
+@interface TXTableViewSectionModule : TXTableViewModule
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, copy) MakeHeaderOrFooterViewBlock sectionView;
 @property (nonatomic, copy) UpdateSectionCallBack updateSection;

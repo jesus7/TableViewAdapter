@@ -28,14 +28,14 @@
     _tableView.adapter = _adapter;
 
     BLOCK_START
-    [_adapter.dataSource addObject:[self getModule:@"多个section" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTabelViewCellModule * module) {
+    [_adapter.dataSource addObject:[self getModule:@"多个section" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTableViewCellModule * module) {
         DemoViewController *controller = [DemoViewController new];
         controller.multi_Section = YES;
         BLOCK_END
         [((ViewController *) sself) presentViewController:controller animated:YES completion:nil];
     }]];
     
-    [_adapter.dataSource addObject:[self getModule:@"动态高度" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTabelViewCellModule * module) {
+    [_adapter.dataSource addObject:[self getModule:@"动态高度" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTableViewCellModule * module) {
         
         DemoViewController *controller = [DemoViewController new];
         controller.dynamicHeight = YES;
@@ -43,7 +43,7 @@
         [((ViewController *) sself) presentViewController:controller animated:YES completion:nil];
     }]];
     
-    [_adapter.dataSource addObject:[self getModule:@"可编辑" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTabelViewCellModule * module) {
+    [_adapter.dataSource addObject:[self getModule:@"可编辑" andClickCell:^(NSIndexPath * indexPath, UITableView * tableView, TXTableViewCellModule * module) {
         
         DemoViewController *controller = [DemoViewController new];
         controller.supportEdit = YES;
@@ -56,11 +56,11 @@
 }
 
 
--(TXTabelViewSimpleCellModule*) getModule:(NSString *) title andClickCell:(ClickCellCallBack ) clickCell {
-    TXTabelViewSimpleCellModule *module = [TXTabelViewSimpleCellModule new];
+-(TXTableViewSimpleCellModule*) getModule:(NSString *) title andClickCell:(ClickCellCallBack ) clickCell {
+    TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];
     module.height = 50;
-    module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTabelViewCellModule* module) {
-        cell.textLabel.text = ((TXTabelViewSimpleCellModule*) module).title;
+    module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTableViewCellModule* module) {
+        cell.textLabel.text = ((TXTableViewSimpleCellModule*) module).title;
     };
     module.clickCell = clickCell;
     module.viewCls = [UITableViewCell class];

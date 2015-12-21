@@ -10,17 +10,17 @@
 #import "TXTableViewAdapter.h"
 #import "DemoTableViewCell.h"
 
-@interface TabelViewSectionModule1 : TXTabelViewSectionModule
+@interface TabelViewSectionModule1 : TXTableViewSectionModule
 
 @end
 @implementation TabelViewSectionModule1
 -(void) loadData {
     for (int i = 0; i < 10; i++) {
-        TXTabelViewSimpleCellModule *module = [TXTabelViewSimpleCellModule new];
+        TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];
         module.height = 50;
-        module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTabelViewCellModule* module) {
-            cell.textLabel.text = ((TXTabelViewSimpleCellModule*) module).title;
-            cell.detailTextLabel.text = ((TXTabelViewSimpleCellModule*) module).subTitle;
+        module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTableViewCellModule* module) {
+            cell.textLabel.text = ((TXTableViewSimpleCellModule*) module).title;
+            cell.detailTextLabel.text = ((TXTableViewSimpleCellModule*) module).subTitle;
         };
         module.cellStyle = UITableViewCellStyleValue1;
         module.subTitle = @(i).stringValue;
@@ -33,18 +33,18 @@
 }
 @end
 
-@interface TabelViewSectionModule2 : TXTabelViewSectionModule
+@interface TabelViewSectionModule2 : TXTableViewSectionModule
 
 @end
 @implementation TabelViewSectionModule2
 -(void) loadData {
     for (int i = 0; i < 10; i++) {
-        TXTabelViewSimpleCellModule *module = [TXTabelViewSimpleCellModule new];
+        TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];
         module.height = 40;
-        module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTabelViewCellModule* module) {
+        module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTableViewCellModule* module) {
             cell.contentView.backgroundColor = [UIColor grayColor];
-            cell.textLabel.text = ((TXTabelViewSimpleCellModule*) module).title;
-            cell.detailTextLabel.text = ((TXTabelViewSimpleCellModule*) module).subTitle;
+            cell.textLabel.text = ((TXTableViewSimpleCellModule*) module).title;
+            cell.detailTextLabel.text = ((TXTableViewSimpleCellModule*) module).subTitle;
         };
         module.cellStyle = UITableViewCellStyleValue1;
         module.viewIdentifier = @"模块2";
@@ -57,13 +57,13 @@
 }
 @end
 
-@interface TabelViewSectionModule3 : TXTabelViewSectionModule
+@interface TabelViewSectionModule3 : TXTableViewSectionModule
 
 @end
 @implementation TabelViewSectionModule3
 -(void) loadData {
     for (int i = 0; i < 10; i++) {
-        TXTabelViewCellModule *module = [TXTabelViewCellModule new];
+        TXTableViewCellModule *module = [TXTableViewCellModule new];
         module.height = 100;
         module.cellStyle = UITableViewCellStyleValue1;
         module.viewIdentifier = @"模块3";
@@ -105,7 +105,7 @@
         [_adapter.dataSource addObject:[TabelViewSectionModule2 new]];
         [_adapter.dataSource addObject:[TabelViewSectionModule3 new]];
         
-        for (TXTabelViewSectionModule *module in _adapter.dataSource) {
+        for (TXTableViewSectionModule *module in _adapter.dataSource) {
             BLOCK_START
             module.loadDataCallBack =  ^void (BOOL success, NSDictionary * userInfo) {
                 BLOCK_END
@@ -138,11 +138,11 @@
 }
 
 
--(TXTabelViewSimpleCellModule*) getModule:(NSString *) title andSubTitle:(NSString *) subTitle {
-    TXTabelViewSimpleCellModule *module = [TXTabelViewSimpleCellModule new];
+-(TXTableViewSimpleCellModule*) getModule:(NSString *) title andSubTitle:(NSString *) subTitle {
+    TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];
     if (_dynamicHeight) {
         module.height = 0; //default height;
-        module.dynamicHeight = ^CGFloat (NSIndexPath* indexPath, UITableView* tableView,  TXTabelViewCellModule* module) {
+        module.dynamicHeight = ^CGFloat (NSIndexPath* indexPath, UITableView* tableView,  TXTableViewCellModule* module) {
             
             if (module.height > 0) {
                 return module.height;
@@ -156,9 +156,9 @@
     } else {
         module.height = 50;
     }
-    module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTabelViewCellModule* module) {
-        cell.textLabel.text = ((TXTabelViewSimpleCellModule*) module).title;
-        cell.detailTextLabel.text = ((TXTabelViewSimpleCellModule*) module).subTitle;
+    module.updateCell =  ^void(UITableViewCell* cell, NSIndexPath* indexPath, UITableView* tableView, TXTableViewCellModule* module) {
+        cell.textLabel.text = ((TXTableViewSimpleCellModule*) module).title;
+        cell.detailTextLabel.text = ((TXTableViewSimpleCellModule*) module).subTitle;
     };
     module.cellStyle = UITableViewCellStyleSubtitle;
     module.subTitle = subTitle;
