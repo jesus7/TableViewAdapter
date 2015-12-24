@@ -14,6 +14,18 @@
 
 @end
 @implementation TabelViewSectionModule1
+
+-(instancetype) init {
+    self = [super init];
+    if (self) {
+        self.header.height = 10;
+        self.header.backgroundColor = [UIColor greenColor];
+        self.footer.height = 20;
+        self.footer.backgroundColor = [UIColor whiteColor];
+    }
+    return self;
+}
+
 -(void) loadData {
     for (int i = 0; i < 10; i++) {
         TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];
@@ -37,6 +49,18 @@
 
 @end
 @implementation TabelViewSectionModule2
+
+-(instancetype) init {
+    self = [super init];
+    if (self) {
+        self.header.height = 10;
+        self.header.backgroundColor = [UIColor orangeColor];
+        self.footer.height = 20;
+        self.footer.backgroundColor = [UIColor blackColor];
+    }
+    return self;
+}
+
 -(void) loadData {
     for (int i = 0; i < 10; i++) {
         TXTableViewSimpleCellModule *module = [TXTableViewSimpleCellModule new];

@@ -40,12 +40,36 @@
     self = [super init];
     if (self) {
         _dataSource = [NSMutableArray array];
-        self.height = 0;
     }
     return self;
 }
+
+-(TXTabelViewSectionHeaderFooterModule *) header {
+    if (_header) {
+        return _header;
+    }
+    _header = [TXTabelViewSectionHeaderFooterModule new];
+    _header.viewIdentifier = @"__header__";
+    return _header;
+}
+
+-(TXTabelViewSectionHeaderFooterModule *) footer {
+    if (_footer) {
+        return _footer;
+    }
+    _footer = [TXTabelViewSectionHeaderFooterModule new];
+    _footer.viewIdentifier = @"__footer__";
+    return _footer;
+}
+
+-(void) loadData {
+    //@TODO
+}
 @end
 
+@implementation TXTabelViewSectionHeaderFooterModule
+
+@end
 
 @implementation TXTableViewSimpleCellModule
 

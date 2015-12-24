@@ -38,8 +38,46 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [self sectionModuleAtSection:section].height;
+    return [self sectionModuleAtSection:section].header.height;
 }
+
+-(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return [self sectionModuleAtSection:section].footer.height;
+}
+
+
+-(UIView *) tableView:(UITableView *)tableView withModule:(TXTabelViewSectionHeaderFooterModule *) module InSection:(NSInteger) section {
+    UITableViewHeaderFooterView *view =  [tableView dequeueReusableHeaderFooterViewWithIdentifier:module.viewIdentifier];
+    if (!view) {
+        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:module.viewIdentifier];
+        if (module.headerFooterView) {
+            UIView *child =  module.headerFooterView();
+            [view addSubview:child];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+        }
+        if (module.backgroundColor) {
+            view.contentView.backgroundColor = module.backgroundColor;
+        }
+    }
+    if (module.updateHeaderFooter) {
+        module.updateHeaderFooter(view, section, tableView, module);
+    }
+    return view;
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    TXTableViewSectionModule *sectionModule = [self sectionModuleAtSection:section];
+    return [self tableView:tableView withModule:sectionModule.footer InSection:section];
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    TXTableViewSectionModule *sectionModule = [self sectionModuleAtSection:section];
+    return [self tableView:tableView withModule:sectionModule.header InSection:section];
+}
+
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     TXTableViewCellModule *module = [self cellModuleAtIndexPath:indexPath];
@@ -47,29 +85,6 @@
         return module.dynamicHeight(indexPath, tableView, module);
     }
     return module.height;
-}
-
--(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    TXTableViewSectionModule *sectionModule = [self sectionModuleAtSection:section];
-    UITableViewHeaderFooterView *view =  [tableView dequeueReusableHeaderFooterViewWithIdentifier:sectionModule.viewIdentifier];
-    if (!view) {
-        view = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:sectionModule.viewIdentifier];
-        if (sectionModule.sectionView) {
-            UIView *child =  sectionModule.sectionView();
-            [view addSubview:child];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
-            [view addConstraint:[NSLayoutConstraint constraintWithItem:child attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
-        }
-        if (sectionModule.sectionBackgroundColor) {
-            view.contentView.backgroundColor = sectionModule.sectionBackgroundColor;
-        }
-    }
-    if (sectionModule.updateSection) {
-        sectionModule.updateSection(view, section, tableView, sectionModule);
-    }
-    return view;
 }
 
 

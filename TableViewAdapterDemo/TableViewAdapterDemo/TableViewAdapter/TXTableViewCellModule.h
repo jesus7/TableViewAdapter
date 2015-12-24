@@ -33,6 +33,8 @@
 
 @class TXTableViewCellModule;
 @class TXTableViewSectionModule;
+@class  TXTabelViewSectionHeaderFooterModule;
+
 //定义更新cell的block
 typedef void (^UpdateCellCallBack)(UITableViewCell*, NSIndexPath*, UITableView*, TXTableViewCellModule*);
 //定义点击cell的block;
@@ -52,9 +54,7 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 @property (nonatomic, strong) NSString *viewIdentifier;
 @property (nonatomic, strong) id model;//数据模型
 @property (nonatomic, assign) NSInteger tag;
-//@TODO 是否把加载数据放到SectionModule里面？
--(void) loadData;
-@property (nonatomic, copy) LoadDataCallBack loadDataCallBack;
+
 @end
 
 //tableview cell模块
@@ -92,13 +92,26 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 typedef UIView* (^MakeHeaderOrFooterViewBlock)();
 typedef void (^UpdateSectionCallBack)(UIView*, NSInteger, UITableView*, TXTableViewSectionModule *);
 
-//tableview 头模块
-@interface TXTableViewSectionModule : TXTableViewModule
-@property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, copy) MakeHeaderOrFooterViewBlock sectionView;
-@property (nonatomic, copy) UpdateSectionCallBack updateSection;
-@property (nonatomic, copy) UIColor *sectionBackgroundColor;
+typedef UIView* (^MakeHeaderOrFooterViewBlock)();
+typedef void (^UpdateHeaderFooterCallBack)(UITableViewHeaderFooterView*, NSInteger, UITableView*, TXTabelViewSectionHeaderFooterModule *);
 
+
+@interface TXTabelViewSectionHeaderFooterModule : TXTableViewModule;
+@property (nonatomic, copy) MakeHeaderOrFooterViewBlock headerFooterView;
+@property (nonatomic, copy) UpdateHeaderFooterCallBack updateHeaderFooter;
+@property (nonatomic, copy) UIColor *backgroundColor;
+@end
+
+
+//tableview 头模块
+@interface TXTableViewSectionModule : NSObject
+@property (nonatomic, strong) NSMutableArray *dataSource;
+
+@property (nonatomic, strong) TXTabelViewSectionHeaderFooterModule *header;
+@property (nonatomic, strong) TXTabelViewSectionHeaderFooterModule *footer;
+
+-(void) loadData;
+@property (nonatomic, copy) LoadDataCallBack loadDataCallBack;
 
 @end
 
