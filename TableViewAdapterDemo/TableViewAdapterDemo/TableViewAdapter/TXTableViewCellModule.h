@@ -21,6 +21,8 @@
 ****/
 
 @class TXTableViewCellModule;
+@class TXTableViewSectionModule;
+@class  TXTabelViewSectionHeaderFooterModule;
 
 @protocol TableViewCellModuleDataSource <NSObject>
 
@@ -30,10 +32,6 @@
 @optional
 -(void) tableView:(UITableView *) tableView UpdateCell:(UITableViewCell *) cell atIndexPath:(NSIndexPath *) indexPath withModule:(TXTableViewCellModule *) module;
 @end
-
-@class TXTableViewCellModule;
-@class TXTableViewSectionModule;
-@class  TXTabelViewSectionHeaderFooterModule;
 
 //定义更新cell的block
 typedef void (^UpdateCellCallBack)(UITableViewCell*, NSIndexPath*, UITableView*, TXTableViewCellModule*);
@@ -88,10 +86,6 @@ typedef void (^LoadDataCallBack)(BOOL, NSDictionary *);
 @property (nonatomic, strong) UIImage *icon;
 @end
 
-
-typedef UIView* (^MakeHeaderOrFooterViewBlock)();
-typedef void (^UpdateSectionCallBack)(UIView*, NSInteger, UITableView*, TXTableViewSectionModule *);
-
 typedef UIView* (^MakeHeaderOrFooterViewBlock)();
 typedef void (^UpdateHeaderFooterCallBack)(UITableViewHeaderFooterView*, NSInteger, UITableView*, TXTabelViewSectionHeaderFooterModule *);
 
@@ -100,6 +94,7 @@ typedef void (^UpdateHeaderFooterCallBack)(UITableViewHeaderFooterView*, NSInteg
 @property (nonatomic, copy) MakeHeaderOrFooterViewBlock headerFooterView;
 @property (nonatomic, copy) UpdateHeaderFooterCallBack updateHeaderFooter;
 @property (nonatomic, copy) UIColor *backgroundColor;
+//TODO support dynamic height?
 @end
 
 
